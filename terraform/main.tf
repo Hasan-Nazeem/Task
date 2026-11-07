@@ -168,6 +168,12 @@ resource "aws_iam_policy" "jenkins_ecr_push" {
   })
 
   tags = local.common_tags
+  # Attach ECR push policy to EC2 role
+
+}
+resource "aws_iam_role_policy_attachment" "ec2_ecr_push" {
+  role       = aws_iam_role.ec2.name
+  policy_arn = aws_iam_policy.jenkins_ecr_push.arn
 }
 
 # EC2 instance
