@@ -28,7 +28,9 @@ pipeline {
         }
 
         stage('Validate source and configuration') {
-            steps { sh './scripts/validate.sh' }
+            steps {
+                sh 'bash ./scripts/validate.sh'
+                }   
         }
 
         stage('Build Docker images') {
